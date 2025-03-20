@@ -1,0 +1,97 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "hugohoster.fullname" . }}
+  labels:
+    {{- include "hugohoster.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.hugohoster.autoscaling.enabled }}
+  replicas: {{ .Values.hugohoster.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "hugohoster.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.hugohoster.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "hugohoster.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.hugohoster.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "hugohoster.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.hugohoster.podSecurityContext | nindent 8 }}
+      terminationGracePeriodSeconds: {{ .Values.hugohoster.terminationGracePeriodSeconds }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.hugohoster.securityContext | nindent 12 }}
+          image: "{{ .Values.hugohoster.image.repository }}:{{ .Values.hugohoster.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.hugohoster.image.pullPolicy }}
+          command:
+            - /manager
+          args:
+
+            - --health-probe-bind-address=:8081
+            {{- if .Values.hugohoster.metrics.enabled }}
+            - --metrics-bind-address=:{{ .Values.hugohoster.metrics.service.servicePort }}
+            {{- end }}
+            {{- if .Values.hugohoster.settings.enabled }}
+            - --settingName={{ .Values.hugohoster.settings.name }}
+            {{- end }}
+
+          {{- with .Values.hugohoster.extraArgs }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          ports:
+            {{- if .Values.hugohoster.metrics.enabled }}
+            - name: {{ .Values.hugohoster.metrics.service.portName }}
+              containerPort: {{ .Values.hugohoster.metrics.service.servicePort }}
+              protocol: TCP
+            {{- end }}
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8081
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 8081
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            {{- toYaml .Values.hugohoster.resources | nindent 12 }}
+          env:
+            {{- with .Values.global.extraEnv }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
+            {{- with .Values.hugohoster.env }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
+          envFrom:
+            {{- with .Values.global.extraEnvFrom }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
+            {{- with .Values.hugohoster.extraEnvFrom }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
+      {{- with .Values.hugohoster.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.hugohoster.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.hugohoster.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

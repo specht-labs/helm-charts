@@ -1,0 +1,24 @@
+{{- if .Values.hugohoster.pdb.enabled }}
+apiVersion: {{ include "apiVersion.pdb" . }}
+kind: PodDisruptionBudget
+metadata:
+  name: {{ include "hugohoster.fullname" . }}
+  labels:
+    {{- include "hugohoster.labels" . | nindent 6 }}
+    {{- with .Values.hugohoster.pdb.labels }}
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+  {{- with .Values.hugohoster.pdb.annotations }}
+  annotations:
+    {{- toYaml . | nindent 6 }}
+  {{- end }}
+spec:
+  {{- with .Values.hugohoster.pdb.maxUnavailable }}
+  maxUnavailable: {{ . }}
+  {{- else }}
+  minAvailable: {{ .Values.hugohoster.pdb.minAvailable | default 0 }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "hugohoster.selectorLabels" . | nindent 6 }}
+{{- end }}

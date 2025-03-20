@@ -1,0 +1,10 @@
+{{- if .Values.hugohoster.settings.enabled }}
+apiVersion: hugo-hoster.cedi.dev/v1alpha1
+kind: Setting
+metadata:
+  name: {{ .Values.hugohoster.settings.name }}
+  labels:
+    {{- include "hugohoster.labels" . | nindent 4 }}
+spec:
+  {{- toYaml .Values.hugohoster.settings.spec | nindent 2 }}
+{{- end }}

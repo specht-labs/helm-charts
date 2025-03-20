@@ -1,0 +1,28 @@
+{{- if .Values.hugohoster.autoscaling.enabled }}
+apiVersion: {{ include "apiVersion.autoscaling" . }}
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ include "hugohoster.fullname" . }}
+  labels:
+    {{- include "hugohoster.labels" . | nindent 4 }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ include "hugohoster.fullname" . }}
+  minReplicas: {{ .Values.hugohoster.autoscaling.minReplicas }}
+  maxReplicas: {{ .Values.hugohoster.autoscaling.maxReplicas }}
+  metrics:
+    {{- if .Values.hugohoster.autoscaling.targetCPUUtilizationPercentage }}
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: {{ .Values.hugohoster.autoscaling.targetCPUUtilizationPercentage }}
+    {{- end }}
+    {{- if .Values.hugohoster.autoscaling.targetMemoryUtilizationPercentage }}
+    - type: Resource
+      resource:
+        name: memory
+        targetAverageUtilization: {{ .Values.hugohoster.autoscaling.targetMemoryUtilizationPercentage }}
+    {{- end }}
+{{- end }}

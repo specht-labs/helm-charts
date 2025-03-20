@@ -1,0 +1,26 @@
+{{- if and .Values.hugohoster.metrics.enabled .Values.hugohoster.metrics.rules.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ include "hugohoster.fullname" . }}
+  {{- if .Values.hugohoster.metrics.rules.namespace }}
+  namespace: {{ .Values.hugohoster.metrics.rules.namespace }}
+  {{- end }}
+  labels:
+    {{- include "hugohoster.labels" . | nindent 4 }}
+    {{- if .Values.hugohoster.metrics.rules.selector }}
+{{- toYaml .Values.hugohoster.metrics.rules.selector | nindent 4 }}
+    {{- end }}
+    {{- if .Values.hugohoster.metrics.rules.additionalLabels }}
+{{- toYaml .Values.hugohoster.metrics.rules.additionalLabels | nindent 4 }}
+    {{- end }}
+  {{- with .Values.hugohoster.metrics.rules.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  groups:
+  - name: argocd
+    rules:
+{{- toYaml .Values.hugohoster.metrics.rules.spec | nindent 6 }}
+{{- end }}
