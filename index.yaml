@@ -1,0 +1,52 @@
+apiVersion: v1
+entries:
+  hugo-hoster:
+  - apiVersion: v2
+    appVersion: 0.0.2
+    created: "2025-03-20T18:46:40.391287689Z"
+    description: A Helm chart for hosting hugo blogs in Kubernetes with S3 to serve
+      the static content.
+    digest: fc562fe6e116b74c4a7f28ca90fb3f48efb511577c16e5b5077e94ca9c01a4ee
+    home: https://github.com/cedi/hugohoster-api
+    keywords:
+    - hugo
+    - staticpage
+    - html
+    - hosting
+    kubeVersion: '>=v1.23.0-0'
+    maintainers:
+    - name: cedi
+      url: https://cedi.dev
+    name: hugo-hoster
+    sources:
+    - https://github.com/hugo-hoster/hugo-hoster
+    type: application
+    urls:
+    - https://github.com/specht-labs/helm-charts/releases/download/hugo-hoster-0.0.5/hugo-hoster-0.0.5.tgz
+    version: 0.0.5
+  urlshortener:
+  - apiVersion: v2
+    appVersion: 0.2.0
+    created: "2025-03-20T18:46:40.612507308Z"
+    description: A Helm chart for urlshortener, a Kubernetes native URL Shortening
+      and redirection service.
+    digest: b9d8714e64d4eb3507d3c51d72b16b5195b9d13242479ef8ff092bcf240270ae
+    home: https://github.com/cedi/urlshortener
+    keywords:
+    - urlshortener
+    - redirection
+    - shortlink
+    - tinyurl
+    kubeVersion: '>=v1.23.0-0'
+    maintainers:
+    - name: cedi
+      url: https://cedi.dev
+    name: urlshortener
+    sources:
+    - https://github.com/cedi/urlshortener
+    - https://github.com/cedi/urlshortener-api
+    type: application
+    urls:
+    - https://github.com/specht-labs/helm-charts/releases/download/urlshortener-0.0.13/urlshortener-0.0.13.tgz
+    version: 0.0.13
+generated: "2025-03-20T18:46:40.612512709Z"
