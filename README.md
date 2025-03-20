@@ -6,6 +6,7 @@
 
 To use a Helm chart from this repository, add the SpechtLabs Helm repository:
 
-```sh
+```bash
 helm repo add spechtlabs https://spechtlabs.github.io/helm-charts
 helm repo update
+```
