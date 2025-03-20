@@ -3,6 +3,29 @@ entries:
   hugo-hoster:
   - apiVersion: v2
     appVersion: 0.0.2
+    created: "2025-03-20T19:37:08.713869634Z"
+    description: A Helm chart for hosting hugo blogs in Kubernetes with S3 to serve
+      the static content.
+    digest: 8aceeb15469d4ac968df0fced164c60b09d057a4c6ff8444f7c7504ee6a0b5fc
+    home: https://github.com/cedi/hugohoster-api
+    keywords:
+    - hugo
+    - staticpage
+    - html
+    - hosting
+    kubeVersion: '>=v1.23.0-0'
+    maintainers:
+    - name: cedi
+      url: https://cedi.dev
+    name: hugo-hoster
+    sources:
+    - https://github.com/hugo-hoster/hugo-hoster
+    type: application
+    urls:
+    - https://github.com/specht-labs/helm-charts/releases/download/hugo-hoster-0.0.7/hugo-hoster-0.0.7.tgz
+    version: 0.0.7
+  - apiVersion: v2
+    appVersion: 0.0.2
     created: "2025-03-20T18:46:40.391287689Z"
     description: A Helm chart for hosting hugo blogs in Kubernetes with S3 to serve
       the static content.
@@ -27,6 +50,30 @@ entries:
   urlshortener:
   - apiVersion: v2
     appVersion: 0.2.0
+    created: "2025-03-20T19:37:08.841082922Z"
+    description: A Helm chart for urlshortener, a Kubernetes native URL Shortening
+      and redirection service.
+    digest: 66dfaf4dda3fc2bcf0b95e024cad71698683b9e84a5ff14440f85a72e7685e70
+    home: https://github.com/cedi/urlshortener
+    keywords:
+    - urlshortener
+    - redirection
+    - shortlink
+    - tinyurl
+    kubeVersion: '>=v1.23.0-0'
+    maintainers:
+    - name: cedi
+      url: https://cedi.dev
+    name: urlshortener
+    sources:
+    - https://github.com/cedi/urlshortener
+    - https://github.com/cedi/urlshortener-api
+    type: application
+    urls:
+    - https://github.com/specht-labs/helm-charts/releases/download/urlshortener-0.0.14/urlshortener-0.0.14.tgz
+    version: 0.0.14
+  - apiVersion: v2
+    appVersion: 0.2.0
     created: "2025-03-20T18:46:40.612507308Z"
     description: A Helm chart for urlshortener, a Kubernetes native URL Shortening
       and redirection service.
@@ -49,4 +96,4 @@ entries:
     urls:
     - https://github.com/specht-labs/helm-charts/releases/download/urlshortener-0.0.13/urlshortener-0.0.13.tgz
     version: 0.0.13
-generated: "2025-03-20T18:46:40.612512709Z"
+generated: "2025-03-20T19:37:08.841096978Z"
