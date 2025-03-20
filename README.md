@@ -1,5 +1,7 @@
 # SpechtLabs Helm Charts
 
+[![Release Charts](https://github.com/specht-labs/helm-charts/actions/workflows/release.yaml/badge.svg)](https://github.com/specht-labs/helm-charts/actions/workflows/release.yaml)
+
 📦 A collection of **Helm charts** used at SpechtLabs to simplify and standardize Kubernetes deployments.
 
 ## 🚀 Available Charts
