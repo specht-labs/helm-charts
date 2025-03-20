@@ -6,17 +6,16 @@
 
 ## 🚀 Available Charts
 
-| Chart Name       | Description                                      | Version |
-|-----------------|--------------------------------------------------|---------|
-| **chart-name**   | Short description of what this chart does       | `1.x.x` |
-| **another-chart** | Another chart description                      | `1.x.x` |
-
-> ℹ️ **Note:** Replace the table entries with your actual chart details.
+| Chart Name       | Description                                                                                | Version  |
+|------------------|--------------------------------------------------------------------------------------------|----------|
+| hugo-hoster      | A Helm chart for hosting hugo blogs in Kubernetes with S3 to serve the static content.     | `0.0.5`  |
+| urlshortener     | A Helm chart for urlshortener, a Kubernetes native URL Shortening and redirection service. | `0.0.13` |
 
 ## 📥 Installation
 
 To use a Helm chart from this repository, add the SpechtLabs Helm repository:
 
-```sh
+```bash
 helm repo add spechtlabs https://spechtlabs.github.io/helm-charts
 helm repo update
+```
