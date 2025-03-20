@@ -38,7 +38,7 @@ hugohoster:
     targetMemoryUtilizationPercentage: 80
 
   image:
-    repository: ghcr.io/hugo-hoster/hugo-hoster
+    repository: ghcr.io/specht-labs/hugo-hoster
     pullPolicy: Always # TODO: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
     tag: "main"
@@ -57,12 +57,12 @@ hugohoster:
     # The name of the service account to use.
     # If not set and create is true, a name is generated using the fullname template
     name: ""
-  
+
   podAnnotations: {}
-  
+
   podSecurityContext:
     runAsNonRoot: true
-  
+
   securityContext:
     allowPrivilegeEscalation: false
     readOnlyRootFilesystem: true
@@ -71,8 +71,9 @@ hugohoster:
     # capabilities:
     #   drop:
     #   - ALL
-  
-  resources: {}
+
+  resources:
+    {}
     # We usually recommend not to specify default resources and to leave this as a conscious
     # choice for the user. This also increases chances charts run on environments with little
     # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -85,7 +86,7 @@ hugohoster:
     #   memory: 64Mi
 
   terminationGracePeriodSeconds: 10
-  
+
   # -- Additional command line arguments to pass to application controller
   extraArgs: []
 
@@ -106,9 +107,9 @@ hugohoster:
     maxUnavailable: ""
 
   nodeSelector: {}
-  
+
   tolerations: []
-  
+
   affinity: {}
 
   ## Application controller metrics configuration
@@ -134,7 +135,8 @@ hugohoster:
       # -- Prometheus [MetricRelabelConfigs] to apply to samples before ingestion
       metricRelabelings: []
       # -- Prometheus ServiceMonitor selector
-      selector: {}
+      selector:
+        {}
         # prometheus: kube-prometheus
 
       # -- Prometheus ServiceMonitor scheme
@@ -157,7 +159,7 @@ hugohoster:
   settings:
     enabled: true
     name: settings
-    spec: 
+    spec:
       ## Ref: https://github.com/hugo-hoster/hugo-hoster/blob/1b01b9106650e55c8d30298a2a4b781cff446a0c/api/v1alpha1/setting_types.go#L24
       ingressClassName: nginx
       serving_url: https://f003.backblazeb2.com/file

@@ -38,7 +38,7 @@ urlshortener:
     targetMemoryUtilizationPercentage: 80
 
   image:
-    repository: ghcr.io/urlshortener-cedi-dev/urlshortener
+    repository: ghcr.io/specht-labs/urlshortener
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
     tag: "latest"
@@ -57,12 +57,12 @@ urlshortener:
     # The name of the service account to use.
     # If not set and create is true, a name is generated using the fullname template
     name: ""
-  
+
   podAnnotations: {}
-  
+
   podSecurityContext:
     runAsNonRoot: true
-  
+
   securityContext:
     allowPrivilegeEscalation: false
     readOnlyRootFilesystem: true
@@ -71,11 +71,11 @@ urlshortener:
     # capabilities:
     #   drop:
     #   - ALL
-  
+
   service:
     type: ClusterIP
     port: 8123
-  
+
   ingress:
     enabled: false
     className: ""
@@ -89,8 +89,9 @@ urlshortener:
     #  - secretName: chart-example-local-tls
     #    hosts:
     #      - chart-example.local
-  
-  resources: {}
+
+  resources:
+    {}
     # We usually recommend not to specify default resources and to leave this as a conscious
     # choice for the user. This also increases chances charts run on environments with little
     # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -103,7 +104,7 @@ urlshortener:
     #   memory: 64Mi
 
   terminationGracePeriodSeconds: 10
-  
+
   # -- Additional command line arguments to pass to application controller
   extraArgs: []
 
@@ -124,9 +125,9 @@ urlshortener:
     maxUnavailable: ""
 
   nodeSelector: {}
-  
+
   tolerations: []
-  
+
   affinity: {}
 
   ## Application controller metrics configuration
@@ -152,7 +153,8 @@ urlshortener:
       # -- Prometheus [MetricRelabelConfigs] to apply to samples before ingestion
       metricRelabelings: []
       # -- Prometheus ServiceMonitor selector
-      selector: {}
+      selector:
+        {}
         # prometheus: kube-prometheus
 
       # -- Prometheus ServiceMonitor scheme
@@ -197,7 +199,7 @@ dashboard:
     targetMemoryUtilizationPercentage: 80
 
   image:
-    repository: ghcr.io/urlshortener-cedi-dev/urlshortener-ui
+    repository: ghcr.io/specht-labs/urlshortener-ui
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
     tag: "latest"
@@ -216,12 +218,12 @@ dashboard:
     # The name of the service account to use.
     # If not set and create is true, a name is generated using the fullname template
     name: ""
-  
+
   podAnnotations: {}
-  
+
   podSecurityContext:
     runAsNonRoot: true
-  
+
   securityContext:
     allowPrivilegeEscalation: false
     readOnlyRootFilesystem: true
@@ -230,11 +232,11 @@ dashboard:
     # capabilities:
     #   drop:
     #   - ALL
-  
+
   service:
     type: ClusterIP
     port: 8443
-  
+
   ingress:
     enabled: false
     className: ""
@@ -248,7 +250,7 @@ dashboard:
     #  - secretName: chart-example-local-tls
     #    hosts:
     #      - chart-example.local
-  
+
   resources:
     # We usually recommend not to specify default resources and to leave this as a conscious
     # choice for the user. This also increases chances charts run on environments with little
@@ -262,7 +264,7 @@ dashboard:
     #   memory: 64Mi
 
   terminationGracePeriodSeconds: 10
-  
+
   # -- Additional command line arguments to pass to application controller
   extraArgs: []
 
@@ -283,9 +285,9 @@ dashboard:
     maxUnavailable: ""
 
   nodeSelector: {}
-  
+
   tolerations: []
-  
+
   affinity: {}
 
   ## Application controller metrics configuration
@@ -311,7 +313,8 @@ dashboard:
       # -- Prometheus [MetricRelabelConfigs] to apply to samples before ingestion
       metricRelabelings: []
       # -- Prometheus ServiceMonitor selector
-      selector: {}
+      selector:
+        {}
         # prometheus: kube-prometheus
 
       # -- Prometheus ServiceMonitor scheme

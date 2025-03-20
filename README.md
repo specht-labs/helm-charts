@@ -8,8 +8,8 @@
 
 | Chart Name       | Description                                                                                | Version  |
 |------------------|--------------------------------------------------------------------------------------------|----------|
-| hugo-hoster      | A Helm chart for hosting hugo blogs in Kubernetes with S3 to serve the static content.     | `0.0.5`  |
-| urlshortener     | A Helm chart for urlshortener, a Kubernetes native URL Shortening and redirection service. | `0.0.13` |
+| hugo-hoster      | A Helm chart for hosting hugo blogs in Kubernetes with S3 to serve the static content.     | `0.0.6`  |
+| urlshortener     | A Helm chart for urlshortener, a Kubernetes native URL Shortening and redirection service. | `0.0.14` |
 
 ## 📥 Installation
 
