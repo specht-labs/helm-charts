@@ -3,7 +3,7 @@ name: hugo-hoster
 description: A Helm chart for hosting hugo blogs in Kubernetes with S3 to serve the static content.
 type: application
 
-version: "0.0.7"
+version: "0.0.8"
 appVersion: "0.0.2"
 
 maintainers:

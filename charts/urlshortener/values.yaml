@@ -38,7 +38,7 @@ urlshortener:
     targetMemoryUtilizationPercentage: 80
 
   image:
-    repository: ghcr.io/specht-labs/urlshortener
+    repository: ghcr.io/SpechtLabs/urlshortener
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
     tag: "latest"
@@ -199,7 +199,7 @@ dashboard:
     targetMemoryUtilizationPercentage: 80
 
   image:
-    repository: ghcr.io/specht-labs/urlshortener-ui
+    repository: ghcr.io/SpechtLabs/urlshortener-ui
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
     tag: "latest"
